@@ -6,6 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const port = process.env.PORT || 3000;
+
 mongoose.connect('mongodb+srv://anshull23:AntulBantai%4023011606@cluster0.azwepr3.mongodb.net/notes');
 
 const NotesSchema = new mongoose.Schema({
@@ -37,6 +39,6 @@ app.delete('/delete/:id', (req,res) => {
     .catch(err => res.json(err))
 })
 
-// app.listen(8000, () => {
-//     console.log("Server is Running");
-// });
+app.listen(port, () => {
+    console.log("Server is Running");
+});
